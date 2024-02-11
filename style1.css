@@ -145,7 +145,7 @@ footer {
 
 /* Profile Section Styles */
 .profile-section {
-  background-image: url('../img/background2.png'); /* Replace 'background.jpg' with your image path */
+  background-image: url('background2.png'); /* Replace 'background.jpg' with your image path */
   background-size: cover;
   background-position: center;
 }
@@ -153,7 +153,7 @@ footer {
 .profile-photo {
   width: 200px;
   height: 200px;
-  background-image: url('../img/profile.jpg'); /* Replace 'profile-photo.jpg' with your photo path */
+  background-image: url('profile.jpg'); /* Replace 'profile-photo.jpg' with your photo path */
   background-size: cover;
   background-position: center;
   border-radius: 50%;
@@ -192,7 +192,7 @@ footer {
 }
 /* Profile Section Styles */
 .profile-section {
-  background-image: url('../img/background2.png'); /* Replace 'background.jpg' with your image path */
+  background-image: url('background2.png'); /* Replace 'background.jpg' with your image path */
   background-size: cover;
   color:rgb(255, 255, 255);
   background-position: center;
@@ -202,7 +202,7 @@ footer {
 .profile-photo {
   width: 200px;
   height: 200px;
-  background-image: url('../img/profile.jpg'); /* Replace 'profile-photo.jpg' with your photo path */
+  background-image: url('profile.jpg'); /* Replace 'profile-photo.jpg' with your photo path */
   background-size: cover;
   background-position: center;
   border-radius: 50%;
