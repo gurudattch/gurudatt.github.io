@@ -1,0 +1,44 @@
+ul,li{
+  display: inline;
+}
+
+ul,li,img{
+  height: 60px;
+  width: 60px;
+}
+
+
+img {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px; /* Adjust width and height as needed */
+  height: 60px; /* Adjust width and height as needed */
+  margin-right: 20px;
+  border-radius: 20%;
+  overflow: hidden; /* Ensure circular shape for image */
+  transition: transform 0.3s ease-in-out;
+}
+
+img {
+  margin-right: 2;
+}
+
+img:hover {
+  transform: scale(1.1);
+}
+
+.skill-list img {
+  width: 100%; /* Ensure image fills its container */
+  height: 100%; /* Ensure image fills its container */
+  object-fit: cover; /* Maintain aspect ratio and cover container */
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 768px) {
+  .img {
+    width: 80px;
+    height: 80px;
+  }
+}
+
