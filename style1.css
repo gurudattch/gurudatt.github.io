@@ -318,8 +318,8 @@ footer {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 50px; /* Adjust width and height as needed */
-  height: 50px; /* Adjust width and height as needed */
+  width: 80px; /* Adjust width and height as needed */
+  height: 80px; /* Adjust width and height as needed */
   margin-right: 20px;
   border-radius: 0%;
   overflow: hidden; /* Ensure circular shape for image */
