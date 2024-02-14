@@ -4,12 +4,12 @@
   margin: 0;
   padding: 0;
 }
-
+#222831,#EEEEEE,#00ADB5,#393E46
 /* Global Styles */
 body {
   font-family: sans-serif;
   line-height: 1.4;
-  background-color: #f7f7f7;
+  background-color: #222831;
 }
 
 .container {
@@ -20,7 +20,7 @@ body {
 
 /* Header Styles */
 header {
-  background-color: #333;
+  background-color: #393E46;
   color: #fff;
   padding: 20px 0;
 }
@@ -51,7 +51,7 @@ nav ul li a {
 }
 
 nav ul li a:hover {
-  background-color: #555;
+  background-color: #81689D;
 }
 
 /* Section Styles */
@@ -70,7 +70,7 @@ nav ul li a:hover {
 
 /* Footer Styles */
 footer {
-  background-color: #333;
+  background-color:  #393E46;
   color: #fff;
   text-align: center;
   padding: 20px 0;
@@ -83,7 +83,7 @@ footer {
   }
 
   nav ul li a {
-    padding: 10px;
+    padding: 4px;
   }
 
   .section {
@@ -110,7 +110,8 @@ footer {
 body {
   font-family: Arial, sans-serif;
   line-height: 1.6;
-  background-color: #f7f7f7;
+  background-color: #222831;
+  color: #EEEEEE;
 }
 
 .container {
@@ -128,7 +129,7 @@ body {
 .section h2 {
   margin-top: 0;
   font-size: 36px;
-  text-decoration: underline;
+
 }
 
 .section p {
@@ -137,7 +138,7 @@ body {
 
 /* Footer Styles */
 footer {
-  background-color: #333;
+  background-color:#393E46;
   color: #fff;
   text-align: center;
   padding: 20px 0;
@@ -145,7 +146,8 @@ footer {
 
 /* Profile Section Styles */
 .profile-section {
-  background-image: url('background2.png'); /* Replace 'background.jpg' with your image path */
+  /* background-image: url('../img/background2.png'); */
+  
   background-size: cover;
   background-position: center;
 }
@@ -153,8 +155,9 @@ footer {
 .profile-photo {
   width: 200px;
   height: 200px;
-  background-image: url('profile.jpg'); /* Replace 'profile-photo.jpg' with your photo path */
+  background-image: url('../img/profile.jpg'); 
   background-size: cover;
+  
   background-position: center;
   border-radius: 50%;
   border: 5px solid #fff;
@@ -174,7 +177,7 @@ footer {
 /* Responsive Styles */
 @media screen and (max-width: 768px) {
   .section {
-    padding: 30px 0;
+    padding: 25px 0;
   }
 
   .section h2 {
@@ -192,7 +195,7 @@ footer {
 }
 /* Profile Section Styles */
 .profile-section {
-  background-image: url('background2.png'); /* Replace 'background.jpg' with your image path */
+  background-color: #00ADB5; /* Replace 'background.jpg' with your image path */
   background-size: cover;
   color:rgb(255, 255, 255);
   background-position: center;
@@ -202,7 +205,7 @@ footer {
 .profile-photo {
   width: 200px;
   height: 200px;
-  background-image: url('profile.jpg'); /* Replace 'profile-photo.jpg' with your photo path */
+  background-color: #00ADB5;/* Replace 'profile-photo.jpg' with your photo path */
   background-size: cover;
   background-position: center;
   border-radius: 50%;
@@ -234,7 +237,7 @@ footer {
 
 .profile-content {
   text-align: center;
-  margin-top: 20px;
+  margin-top: 10px;
   animation: fadeIn 1s forwards; /* Add fade-in animation */
   opacity: 0; /* Initially hide text content */
 }
@@ -253,21 +256,26 @@ footer {
   .profile-photo {
     width: 150px;
     height: 150px;
+    
   }
 }
 
 /* Projects Section Styles */
 .project {
-  display: inline-block;
-  margin-right: 10px;
+  display:inline-block;
+  margin-left:26px;
+  margin-right: 10%;
+  margin-top: 10px;
   padding: 10px 20px;
   border-radius: 5px;
   transition: transform 0.3s ease-in-out;
   background-color: #f9f9f9;
+  cursor: pointer;
 }
 
 .project:last-child {
   margin-right: 0;
+  
 }
 
 .project:hover {
@@ -277,6 +285,7 @@ footer {
 .project h3 {
   font-size: 20px;
   margin-bottom: 5px;
+ 
 }
 
 .project p {
@@ -289,7 +298,9 @@ footer {
   padding: 0px 20px;
   border-radius: 5px;
   transition: transform 0.3s ease-in-out;
-  background-color: #f9f9f9;
+  background-color: #00ADB5;
+  font-weight: bold;
+  cursor: pointer;
 }
 
 .certification:hover {
@@ -318,8 +329,8 @@ footer {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 80px; /* Adjust width and height as needed */
-  height: 80px; /* Adjust width and height as needed */
+  width: 50px; /* Adjust width and height as needed */
+  height: 50px; /* Adjust width and height as needed */
   margin-right: 20px;
   border-radius: 0%;
   overflow: hidden; /* Ensure circular shape for image */
@@ -335,9 +346,9 @@ footer {
 }
 
 .social-link img {
-  width: 100%; /* Ensure image fills its container */
-  height: 100%; /* Ensure image fills its container */
-  object-fit: cover; /* Maintain aspect ratio and cover container */
+  width: 100%;
+  height: 100%; 
+  object-fit: cover;
 }
 
 /* Responsive Styles */
@@ -350,4 +361,9 @@ footer {
 .thm {
     display: grid;
     place-items: center;
+
+  }
+  
+  .thm:hover{
+    transform: scale(90%);
   }
