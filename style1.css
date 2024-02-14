@@ -155,7 +155,7 @@ footer {
 .profile-photo {
   width: 200px;
   height: 200px;
-  background-image: url('../img/profile.jpg'); 
+  background-image: url('profile.jpg'); 
   background-size: cover;
   
   background-position: center;
