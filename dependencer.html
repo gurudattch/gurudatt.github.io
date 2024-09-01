@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dependency Confusion Detector</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        input[type="text"] {
+            width: 80%;
+            padding: 8px;
+            margin: 10px 0;
+        }
+        button {
+            padding: 10px 15px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+        .result {
+            margin-top: 20px;
+        }
+        .result p {
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Dependency Confusion Detector</h1>
+    <p>Enter the URL/path of a package.json file:</p>
+    <input type="text" id="packageUrl" placeholder="Enter URL/path of package.json">
+    <button id="checkButton" onclick="checkDependencies()">Check Dependencies</button>
+
+    <div id="loading" class="hidden">Checking dependencies, please wait...</div>
+    <div id="results" class="result hidden">
+        <h2>Dependency Status Codes:</h2>
+        <div id="vulnerabilities"></div>
+    </div>
+
+    <script>
+        async function checkDependencies() {
+            const packageUrl = document.getElementById('packageUrl').value;
+            const checkButton = document.getElementById('checkButton');
+            const loading = document.getElementById('loading');
+            const results = document.getElementById('results');
+            const vulnerabilitiesDiv = document.getElementById('vulnerabilities');
+
+            if (!packageUrl) {
+                alert('Please enter a valid URL/path for the package.json file.');
+                return;
+            }
+
+            checkButton.disabled = true;
+            loading.classList.remove('hidden');
+            results.classList.add('hidden');
+            vulnerabilitiesDiv.innerHTML = '';
+
+            let rawUrl = packageUrl;
+
+            // Convert GitHub URL to raw content URL
+            if (packageUrl.includes('github.com')) {
+                rawUrl = packageUrl
+                    .replace('github.com', 'raw.githubusercontent.com')
+                    .replace('/blob/', '/');
+            }
+
+            try {
+                const response = await fetch(rawUrl);
+                const packageJson = await response.json();
+                const dependencies = { ...packageJson.dependencies, ...packageJson.devDependencies };
+
+                if (!dependencies || Object.keys(dependencies).length === 0) {
+                    alert('No dependencies found in the provided package.json file.');
+                    return;
+                }
+
+                for (const dependency in dependencies) {
+                    const url = `https://registry.npmjs.org/${dependency}`;
+                    try {
+                        const depResponse = await fetch(url);
+
+                        const para = document.createElement('p');
+                        para.textContent = `Dependency ${dependency}: Status ${depResponse.status}`;
+                        vulnerabilitiesDiv.appendChild(para);
+                        
+                        // Force the browser to render updates immediately
+                        await new Promise(r => setTimeout(r, 0));
+
+                        if (depResponse.status === 404) {
+                            const warning = document.createElement('p');
+                            warning.textContent = `⚠️ Dependency ${dependency} is potentially vulnerable to dependency confusion.`;
+                            warning.style.backgroundColor = '#ffcccc';
+                            vulnerabilitiesDiv.appendChild(warning);
+
+                            // Force the browser to render updates immediately
+                            await new Promise(r => setTimeout(r, 0));
+                        }
+                    } catch (err) {
+                        console.error(`Error fetching dependency ${dependency}:`, err);
+                        const errorPara = document.createElement('p');
+                        errorPara.textContent = `Error fetching dependency ${dependency}. Check console for details.`;
+                        vulnerabilitiesDiv.appendChild(errorPara);
+
+                        // Force the browser to render updates immediately
+                        await new Promise(r => setTimeout(r, 0));
+                    }
+                }
+
+                results.classList.remove('hidden');
+            } catch (err) {
+                alert('Failed to load the package.json file. Please check the URL/path and try again.');
+                console.error('Error:', err);
+            } finally {
+                checkButton.disabled = false;
+                loading.classList.add('hidden');
+            }
+        }
+    </script>
+</body>
+</html>
